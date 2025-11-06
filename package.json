@@ -1,0 +1,17 @@
+{
+  "name": "luna-root",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Repo root package.json to run CRM-System-main server for hosting platforms",
+  "scripts": {
+    "start": "node CRM-System-main/server.js",
+    "dev": "node CRM-System-main/server.js"
+  },
+  "engines": {
+    "node": ">=12"
+  },
+  "dependencies": {
+    "express": "^4.18.2",
+    "json-server": "^0.17.3"
+  }
+}
