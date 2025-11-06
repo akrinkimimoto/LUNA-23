@@ -16,7 +16,8 @@ let searchbar = document.getElementById("searchbar");
 let clearSearchBtn = document.getElementById('clearSearch');
 
 // Storage and API
-const API_BASE = 'http://localhost:3001/users'; // json-server endpoint
+// Use a relative API path so the app works when hosted (server mounts json-server under /api)
+const API_BASE = '/api/users';
 let casesArr = [];
 let editIndex = -1;
 
