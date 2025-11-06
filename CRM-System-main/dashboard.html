@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CCIT's.corp</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined" rel="stylesheet">
+
+
+  <link rel="stylesheet" href="styles/dashboard.css">
+  <link rel="stylesheet" href="styles/employee.css">
+  <meta http-equiv="Cache-Control" content="no-store" />
+  <meta http-equiv="Pragma" content="no-cache" />
+  <meta http-equiv="Expires" content="0" />
+</head>
+<body>
+  <script>
+    try{
+      const auth = localStorage.getItem('auth');
+      if (auth !== '1') {
+        window.location.replace('./login.html');
+      }
+    }catch(e){ /* ignore */ }
+  </script>
+    <div class="grid-container">
+        
+        <header class="header">
+
+            <div class="menu-icon" onclick="openSidebar()">
+                <span class="material-icons-outlined">keyboard_double_arrow_left</span>
+              </div>
+             
+               <div class="header-right">
+                  <span id="username"></span>
+                </div>
+
+        </header>
+        
+
+        <aside id="sidebar">
+            <div class="sidebar-title">
+                <div class="sidebar-brand  ">
+                  CCIT's.corp
+                </div>
+                <span class="material-icons-outlined" onclick="closeSidebar()">close</span>
+               
+              </div>
+
+              
+      
+              <ul class="sidebar-list">
+                <li class="sidebar-list-item">
+                  <a href="dashboard.html" id="active">
+                    <span class="material-icons-outlined">dashboard</span> Dashboard
+                  </a>
+                </li>
+                <li class="sidebar-list-item">
+                  <a href="task.html">
+                    <span class="material-icons-outlined">task</span> Tasks
+                  </a>
+                </li>
+                <li class="sidebar-list-item">
+                  <a href="pages/employee.html">
+                    <span class="material-icons-outlined">person</span> Employees
+                  </a>
+                </li>
+                <li class="sidebar-list-item">
+                  <a href="customers.html">
+                    <span class="material-icons-outlined">people</span> Customers
+                  </a>
+                </li>
+                <li class="sidebar-list-item">
+                  <a href="cases.html">
+                    <span class="material-icons-outlined">folder_open</span> Cases
+                  </a>
+                </li>
+                <li class="sidebar-list-item">
+                  <a href="login.html" id="logout">
+                    <span class="material-icons-outlined">logout</span> Log Out
+                  </a>
+                </li>
+            </ul>
+
+
+        </aside>
+
+        <main class="main-container">
+            <hr>
+              <div class="main-cards">
+                
+      
+                <div class="card">
+                  <div class="card-inner">
+                    <h3>Successful cases</h3>
+                   
+                  </div>
+                  <h1>42</h1>
+                </div>
+      
+                <div class="card">
+                  <div class="card-inner">
+                    <h3>Cases</h3>
+                    
+                  </div>
+                  <h1>12</h1>
+                </div>
+            <div class="card">
+                <div class="card-inner">
+                  <h3>Employee</h3>
+                 
+                </div>
+                <h1>156</h1>
+              </div>g
+    
+              <div class="card">
+                <div class="card-inner">
+                  <h3>New Customers</h3>
+                 
+                </div>
+                <h1>20</h1>
+              </div>
+    
+            </div>
+
+            <div class="form-container">
+              <h2>Add Employee Data</h2>
+              <form>
+                <label for="name">Name:</label>
+                <input type="text" id="name" name="name" value="" placeholder="Employee Name" >
+                
+                <label for="position">Position:</label>
+                <input type="text" id="position" name="position" value="" placeholder="Employee Position" >
+                
+                <label for="department">Department:</label>
+                <input type="text" id="department" name="department" value="" placeholder="Employee Department" >
+                
+                <label for="status">Status:</label>
+                <input type="text" id="status" name="status" value="" placeholder="Employee Status" >
+                
+                <label for="phone">Phone Number:</label>
+                <input type="tel" id="phone" name="phone" value="" placeholder="Employee Phone Number" >
+                
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" value="" placeholder="Employee Email" >
+                
+                <button type="submit">Submit</button>
+              </form>
+    </div>
+
+    <hr>
+            <div class="charts">
+    
+              <div class="charts-card">
+                <h2 class="chart-title">Cases</h2>
+                <div id="bar-chart"></div>
+              </div>
+    
+              <div class="charts-card">
+                <h2 class="chart-title">Performance</h2>
+                <div id="area-chart"></div>
+              </div>
+    
+            </div>
+        </main>
+
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/apexcharts/3.41.0/apexcharts.min.js" ></script>
+    <script src="scripts/dashboard.js"></script>
+    <script src="scripts/employee.js"></script>
+  <script>
+    // Ensure logout clears auth and replaces history so back-button won't return
+    (function(){
+      const a = document.getElementById('logout');
+      if (!a) return;
+      a.addEventListener('click', function(evt){
+        try{ localStorage.removeItem('auth'); localStorage.removeItem('username'); sessionStorage.clear(); }catch(e){}
+        // prevent default navigation and replace
+        evt.preventDefault();
+        window.location.replace('./login.html');
+      });
+    })();
+  </script>
+</body>
+
+
+</html>

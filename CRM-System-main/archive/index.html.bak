@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CCIT's.corp - CRM Software that Makes Sales a Breeze</title>
+    <meta name="description" content="CCIT's.corp is a comprehensive CRM solution that helps sales teams discover leads, boost engagement, and close more deals.">
+    <link rel="stylesheet" href="./styles/index.css">
+    <link rel="stylesheet" href="https://unpkg.com/flickity@2/dist/flickity.min.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined" rel="stylesheet">
+</head>
+<body>
+    <div class="main-nav">
+        <nav id="navbar" role="navigation" aria-label="Main navigation">
+            <img src="images/ChatGPT Image Oct 9, 2025, 03_11_41 PM.png" alt="CCIT's.corp logo">
+
+            <!-- Mobile toggle button -->
+            <button id="navToggle" class="nav-toggle" aria-controls="mobileMenu" aria-expanded="false" aria-label="Open menu">
+              <span class="material-icons-outlined">menu</span>
+            </button>
+
+            <div class="nav-actions">
+              <a href="index.html" class="nav-link">Home</a>
+              <a href="#features" class="nav-link">Features</a>
+              <a href="#pricing" class="nav-link">Pricing</a>
+              <a href="#about" class="nav-link">About</a>
+              <a href="login.html"><button class="btn-primary">SIGN UP</button></a>
+            </div>
+
+            <!-- mobile menu (slide-in panel) -->
+            <div id="mobileMenu" class="mobile-menu" hidden aria-hidden="true">
+              <nav aria-label="Mobile navigation">
+                <ul>
+                  <li><a href="index.html" class="mobile-link">Home</a></li>
+                  <li><a href="#features" class="mobile-link">Features</a></li>
+                  <li><a href="#pricing" class="mobile-link">Pricing</a></li>
+                  <li><a href="#about" class="mobile-link">About</a></li>
+                  <li><a href="login.html" class="mobile-link">Sign In / Sign Up</a></li>
+                </ul>
+              </nav>
+            </div>
+        </nav>
+    </div>
+
+    <div class="hero" id="hero">
+        <div class="cont">
+            <div class="hero-content">
+                <div class="left-text">
+                    <h1 class="hero-title">A CRM software that makes sales a breeze</h1>
+                    <div class="hero-body">
+                        <p>We know selling can be hard. And it gets even more complicated when your sales teams have to juggle multiple tools to make a sale.</p>
+                        <p>But with a single, comprehensive tool like CCIT's.corp, you can:</p>
+                        <ul>
+                            <li>Discover the best leads</li>
+                            <li>Boost contextual engagement</li>
+                            <li>Manage multiple pipelines</li>
+                            <li>Drive deals to closure</li>
+                            <li>Nurture leads and existing customers</li>
+                        </ul>
+                        <div class="hero-cta">
+                            <a href="login.html" class="btn-primary">Try for free</a>
+                            <span class="trial-note">21-day trial, no card required</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="right-img">
+                    <img src="images/7098132(1).jpg" alt="Sales team collaboration illustration" width="540" height="405">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="main-pic" id="features">
+        <div class="cont">
+            <h2 class="section-title">Why CCIT's.corp?</h2>
+            <div class="carousel" data-flickity='{ "wrapAround": true, "autoPlay": 5000, "prevNextButtons": false }'>
+                <div class="carousel-cell">
+                    <h3>Save time with automation</h3>
+                    <p>Create intelligent workflows that operate like clockwork, and find more time for activities that actually make a difference.</p>
+                    <img src="images/dashboard.png" alt="Dashboard screenshot showing automation workflows">
+                </div>
+                <div class="carousel-cell">
+                    <h3>Intelligent Assistant</h3>
+                    <p>Your AI-powered assistant analyzes and learns from historical data to provide insights that enable smart decision making.</p>
+                    <img src="images/enployees.png" alt="AI assistant analyzing employee data">
+                </div>
+                <div class="carousel-cell">
+                    <h3>Unified view of customers</h3>
+                    <p>View all customer interactions in one place—social profiles, website engagement, touchpoints, and more.</p>
+                    <img src="images/customer.png" alt="Unified customer profile view">
+                </div>
+            </div>
+        </div>
+    </div>
+
+   <!-- Pricing Section -->
+   <section class="pricing" id="pricing">
+     <div class="cont">
+       <h2>Pricing plans for teams of all sizes</h2>
+       <p class="lead">Simple, predictable pricing. Start with a 21-day free trial — no credit card required.</p>
+
+       <div class="pricing-grid">
+         <div class="price-card">
+           <h3>Basic</h3>
+           <div class="price">Free</div>
+           <ul>
+             <li>Up to 3 users</li>
+             <li>Core CRM features</li>
+             <li>Email support</li>
+           </ul>
+           <a href="login.html" class="btn-primary">Get Started</a>
+         </div>
+
+         <div class="price-card popular">
+           <div class="ribbon">Most popular</div>
+           <h3>Pro</h3>
+           <div class="price">$29<span>/mo</span></div>
+           <ul>
+             <li>Unlimited users</li>
+             <li>Automation & workflows</li>
+             <li>Priority email & chat support</li>
+           </ul>
+           <a href="login.html" class="btn-primary">Start Pro</a>
+         </div>
+
+         <div class="price-card">
+           <h3>Enterprise</h3>
+           <div class="price">Custom</div>
+           <ul>
+             <li>Advanced security & SSO</li>
+             <li>Dedicated account manager</li>
+             <li>Custom integrations</li>
+           </ul>
+           <a href="login.html" class="btn-primary">Contact Sales</a>
+         </div>
+       </div>
+     </div>
+   </section>
+
+   <!-- About Section -->
+   <section class="about" id="about">
+     <div class="cont about-grid">
+       <div class="about-text">
+         <h2>About CCIT's.corp</h2>
+         <p class="lead">We build CRM software that helps teams close more deals with less friction. Our mission is to provide a single, powerful platform that combines sales, customer data, and automation — so teams can focus on relationships, not spreadsheets.</p>
+         <h3>Our values</h3>
+         <ul>
+           <li>Customer-first product design</li>
+           <li>Data privacy and security</li>
+           <li>Simple pricing and predictable billing</li>
+         </ul>
+       </div>
+       <div class="about-stats">
+         <div class="stat"><strong>21</strong><span>day free trial</span></div>
+         <div class="stat"><strong>99.9%</strong><span>uptime SLA</span></div>
+         <div class="stat"><strong>100k+</strong><span>users worldwide</span></div>
+       </div>
+     </div>
+   </section>
+
+   <div class="footer">
+<div class="cont">
+   <h1>Use the best CRM solution <br>
+    CCIT's.corp</h1>
+   <p>Start your 21-day free trial. No credit card required. No strings attached.</p>
+  <a href="login.html">
+  <button class="btn-primary">SIGN UP FOR FREE</button></a>
+</div>
+   </div>
+  <div id="about"></div>
+  <div class="copyright">
+    <p>© 2025 CCIT's.corp All Rights Reserved</p>
+   </div>
+   
+</body>
+<script src="https://unpkg.com/flickity@2/dist/flickity.pkgd.min.js"></script>
+</html>

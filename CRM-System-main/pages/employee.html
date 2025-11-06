@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Employee Pages</title>
+    <link rel="stylesheet" href="../styles/employee.css">
+    <link rel="stylesheet" href="../styles/dashboard.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined" rel="stylesheet">
+</head>
+<body> 
+
+
+
+  <div class="grid-container">
+   
+    <header class="header">
+
+        <div class="menu-icon" onclick="openSidebar()">
+            <span class="material-icons-outlined">keyboard_double_arrow_left</span>
+          </div>
+         
+          <div class="header-right">
+            <span id="username"></span>
+          </div>
+
+    </header>
+    
+
+    
+    <aside id="sidebar">
+        <div class="sidebar-title">
+            <div class="sidebar-brand  ">
+              CCIT's.corp
+            </div>
+            <span class="material-icons-outlined" onclick="closeSidebar()">close</span>
+           
+          </div>
+
+         
+  
+          <ul class="sidebar-list">
+            <li class="sidebar-list-item">
+              <a href="../dashboard.html">
+                <span class="material-icons-outlined">dashboard</span> Dashboard
+              </a>
+            </li>
+            <li class="sidebar-list-item">
+              <a href="../task.html">
+                <span class="material-icons-outlined">task</span> Tasks
+              </a>
+            </li>
+            <li class="sidebar-list-item">
+              <a href="employee.html" id="active">
+                <span class="material-icons-outlined">person</span> Employees
+              </a>
+            </li>
+            <li class="sidebar-list-item">
+              <a href="../customers.html">
+                <span class="material-icons-outlined">people</span> Customers
+              </a>
+            </li>
+            <li class="sidebar-list-item">
+              <a href="../cases.html">
+                <span class="material-icons-outlined">folder_open</span> Cases
+              </a>
+            </li>
+            <li class="sidebar-list-item">
+              <a href="../login.html" id="logout">
+                <span class="material-icons-outlined">logout</span> Log Out
+              </a>
+            </li>
+        </ul>
+
+
+    </aside>
+
+    <main class="main-container">
+      <div class="nav2">
+        <h2 class="employee">Employee <span id="next"></span></h2>
+        <button class="addEmp" type="button" aria-label="Add new employee">
+          <span class="material-icons-outlined">add_circle</span>
+          <span>Add new employee</span>
+        </button>
+      </div>
+        <hr>
+        <div class="nav3">
+          <div class="left">
+              <div class="search-container">
+                <span class="material-icons-outlined search-icon">search</span>
+                <input type="text" class="searchBtn" placeholder="Search employees...">
+                <button type="button" class="search-clear material-icons-outlined" aria-label="Clear search">close</button>
+                <div class="search-loader"></div>
+              </div>
+              <button class="positionBtn btnsrc">Position</button>
+              <button class="department btnsrc">Department</button>
+              <button class="status btnsrc">Status</button>
+              <button class="all_data btnsrc">Refresh</button>
+          </div>
+  
+        </div>
+        <div id="container">
+          <div class="table-card">
+            <table>
+              <thead>
+                <tr>
+                  <th>Name</th>
+                  <th>Position</th>
+                  <th>Department</th>
+                  <th>Status</th>
+                  <th>Phone No.</th>
+                  <th>Email</th>
+                </tr>
+              </thead>
+              <tbody id="tbody">
+              </tbody>
+            </table>
+          </div>
+        </div>
+  
+        <div class="form-container">
+          <h2>Add Employee Data</h2>
+          <form>
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name" value="" placeholder="Employee Name" >
+            
+            <label for="position">Position:</label>
+            <select id="position" name="position">
+              <option value="">Select Position</option>
+              <option value="Intern">Intern</option>
+              <option value="Junior">Junior</option>
+              <option value="Senior">Senior</option>
+              <option value="Lead">Lead</option>
+              <option value="Manager">Manager</option>
+              <option value="Director">Director</option>
+              <option value="Other">Other</option>
+            </select>
+            
+            <label for="department">Department:</label>
+            <select id="department" name="department">
+              <option value="">Select Department</option>
+              <option value="IT">Information Technology</option>
+              <option value="HR">Human Resources</option>
+              <option value="Finance">Finance</option>
+              <option value="Marketing">Marketing</option>
+              <option value="Operations">Operations</option>
+              <option value="Sales">Sales</option>
+              <option value="Other">Other</option>
+            </select>
+            
+            <label for="status">Status:</label>
+            <select id="status" name="status">
+              <option value="">Select Status</option>
+              <option value="Active">Active</option>
+              <option value="In a meeting">In a meeting</option>
+              <option value="Out Sick">Out Sick</option>
+              <option value="On Leave">On Leave</option>
+              <option value="Inactive">Inactive</option>
+            </select>
+            
+            <label for="phone">Phone Number:</label>
+            <input type="tel" id="phone" name="phone" value="" placeholder="Employee Phone Number" >
+            
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" value="" placeholder="Employee Email" >
+            
+            <button type="submit">Submit</button>
+          </form>
+</div>
+<div class="pagination-wrapper" id="pagination-wrapper"></div>
+    </main>
+
+</div>
+
+  
+      
+    
+<script src="../scripts/employee.js"></script>
+<script src="../scripts/dashboard.js"></script>
+<script src="../scripts/employee-ui.js"></script>
+
+</body>
+</html>

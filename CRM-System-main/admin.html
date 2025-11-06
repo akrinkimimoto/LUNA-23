@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="./styles/admin.css">
+  <title>Appending the data</title>
+  <link rel="stylesheet" href="./styles/skeleton.css">
+  <meta http-equiv="Cache-Control" content="no-store" />
+  <meta http-equiv="Pragma" content="no-cache" />
+  <meta http-equiv="Expires" content="0" />
+
+</head>
+
+<body>
+  <script>
+    // Enforce auth on admin page: if no valid 'auth' flag in localStorage, redirect to login.
+    try{
+      const auth = localStorage.getItem('auth');
+      if (auth !== '1') {
+        // use replace so back-button won't return here
+        window.location.replace('./login.html');
+      }
+    }catch(e){ /* ignore */ }
+  </script>
+  <header>
+    <nav>
+    <div id="logo">
+      <a href="dashboard.html" aria-label="Go to dashboard"><img src="./images/ChatGPT Image Oct 9, 2025, 03_11_41 PM.png" alt="logo"></a>
+    </div>
+
+    <div id="search_div"> 
+      <span class="fa fa-search"></span>
+      <input type="search" id="search" placeholder="Search by name">
+      <div id="search-suggestions" class="suggestions-dropdown"></div>
+    </div>
+
+    <div class="header-actions">
+  <button id="join" class="button-primary">Login</button>
+  <button id="logout-btn" title="Log out" class="button-secondary">Log out</button>
+    </div>
+    </nav>
+</header>
+
+  <main>
+    
+    <div id="container">
+      <div id="update_div">
+        <div class="columns four sidebar-one" id="sidebar-one">
+
+          
+
+          <div id="filterAdd">
+            <h4>Add Employee</h4>
+            <input type="text" id="hotel-name" class="u-full-width" placeholder="Name" >
+            <br />
+            
+            <input type="text" id="hotel-location" class="u-full-width" list="positions" placeholder="Position (type or pick)" aria-haspopup="listbox">
+            <br />
+            <input type="text" id="hotel-desc" class="u-full-width" list="departments" placeholder="Department (type or pick)" aria-haspopup="listbox">
+            <br />
+            <input type="text" id="hotel-price" class="u-full-width" list="statuses" placeholder="Status (type or pick)" aria-haspopup="listbox">
+            <br />
+            <input type="text" id="hotel-phone" class="u-full-width" placeholder="phone number" >
+            <br />
+            <input type="email" id="hotel-email" class="u-full-width" placeholder="Email" >
+            <br />
+            <button id="add-hotel" class="u-full-width button button-primary">
+              Add Employee
+            </button>
+            <hr />
+            <br />
+          </div>
+
+          <datalist id="positions">
+            <option value="Manager"></option>
+            <option value="Developer"></option>
+            <option value="Designer"></option>
+            <option value="HR"></option>
+            <option value="Sales"></option>
+            <option value="Support"></option>
+          </datalist>
+          <datalist id="departments">
+            <option value="Engineering"></option>
+            <option value="Human Resources"></option>
+            <option value="Sales"></option>
+            <option value="Marketing"></option>
+            <option value="Finance"></option>
+            <option value="Operations"></option>
+          </datalist>
+          <datalist id="statuses">
+            <option value="Active"></option>
+            <option value="Inactive"></option>
+            <option value="On Leave"></option>
+            <option value="Probation"></option>
+          </datalist>
+
+
+          <div id="Updatediv">
+            <h4>Update all fields of Employee</h4>
+            <input type="text" id="update-hotel-id" class="u-full-width" placeholder="ID" >
+            <br />
+            <input type="text" id="update-hotel-name" class="u-full-width" placeholder="Name" >
+          
+          
+          
+            <input type="text" id="update-hotel-location" class="u-full-width" list="positions" placeholder="Position (type or pick)" aria-haspopup="listbox">
+            <br />
+            <input type="text" id="update-hotel-desc" class="u-full-width" list="departments" placeholder="Department (type or pick)" aria-haspopup="listbox">
+            <br />
+            <input type="text" id="update-hotel-price" class="u-full-width" list="statuses" placeholder="Status (type or pick)" aria-haspopup="listbox">
+            <br />
+            <input type="number" id="update-hotel-review" class="u-full-width" placeholder="Phone Number" >
+            <br />
+            <input type="email" id="update-hotel-email" class="u-full-width" placeholder="Email" >
+            <br>
+            <button id="update-hotel" class="u-full-width button button-primary">
+              Update all fields
+            </button>
+            <hr />
+            <br />
+          </div>
+
+
+
+          <div id="Updateprice">
+            <h4>Update only Phone Number</h4>
+            <input type="text" id="update-score-hotel-id" class="u-full-width" placeholder="ID" >
+            <br />
+            <input type="number" id="update-score-hotel-price" class="u-full-width" placeholder="Phone Number" >
+            <br />
+            <button id="update-score-hotel" class="u-full-width button button-primary">
+              Update Phone Number
+            </button>
+            
+            <br />
+          </div>
+
+         
+
+          <div id="Sortdiv">
+            
+            <br />
+          </div>
+
+          
+
+          <div id="SortRating">
+            
+            <br />
+          
+          </div>
+        </div>
+      </div>
+
+   
+
+      <div id="product_div">
+        <div class="filter_head">
+          <h3 id="count">Results</h3>
+        </div>
+
+        <div id="product_container">
+
+         
+          
+        </div>
+      </div>
+    </div>
+  </main>
+  <script src="./scripts/admin.js"></script>
+  <script>
+    // Logout button behavior: clear session and redirect to login
+    (function(){
+      const btn = document.getElementById('logout-btn');
+      if (!btn) return;
+      btn.addEventListener('click', function(){
+        try{ localStorage.removeItem('username'); localStorage.removeItem('auth'); sessionStorage.clear(); }catch(e){}
+        if (window.showToast) {
+          try{ showToast('Logged out', 'info', 1200); }catch(e){}
+          setTimeout(()=> { window.location.replace('./login.html'); }, 600);
+        } else {
+          // fallback
+          window.location.replace('./login.html');
+        }
+      });
+    })();
+  </script>
+</body>
+
+
+</html>

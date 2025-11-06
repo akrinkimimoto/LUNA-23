@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Customers - CCIT's.corp</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined" rel="stylesheet">
+    
+    <link rel="stylesheet" href="styles/dashboard.css">
+    <link rel="stylesheet" href="styles/customers.css">
+    <meta http-equiv="Cache-Control" content="no-store" />
+    <meta http-equiv="Pragma" content="no-cache" />
+    <meta http-equiv="Expires" content="0" />
+</head>
+<body>
+    <script>
+        // Enforce auth on protected pages: require localStorage.auth === '1'
+        try{
+            const auth = localStorage.getItem('auth');
+            if (auth !== '1') {
+                window.location.replace('./login.html');
+            }
+        }catch(e){ /* ignore */ }
+    </script>
+    <div class="grid-container">
+        <header class="header">
+            <div class="menu-icon" onclick="openSidebar()">
+                <span class="material-icons-outlined">keyboard_double_arrow_left</span>
+            </div>
+            <div class="header-right">
+                <span id="username"></span>
+            </div>
+        </header>
+
+        <aside id="sidebar">
+            <div class="sidebar-title">
+                <div class="sidebar-brand">
+                    CCIT's.corp
+                </div>
+                <span class="material-icons-outlined" onclick="closeSidebar()">close</span>
+            </div>
+
+            <input type="text" placeholder="Search" id="searchbar">
+
+            <ul class="sidebar-list">
+                <li class="sidebar-list-item">
+                    <a href="dashboard.html">
+                        <span class="material-icons-outlined">dashboard</span> Dashboard
+                    </a>
+                </li>
+                <li class="sidebar-list-item">
+                    <a href="task.html">
+                        <span class="material-icons-outlined">task</span> Tasks
+                    </a>
+                </li>
+                <li class="sidebar-list-item">
+                    <a href="pages/employee.html">
+                        <span class="material-icons-outlined">person</span> Employees
+                    </a>
+                </li>
+                <li class="sidebar-list-item">
+                    <a href="customers.html" id="active">
+                        <span class="material-icons-outlined">people</span> Customers
+                    </a>
+                </li>
+                <li class="sidebar-list-item">
+                    <a href="cases.html">
+                        <span class="material-icons-outlined">folder_open</span> Cases
+                    </a>
+                </li>
+                <li class="sidebar-list-item">
+                    <a href="login.html" id="logout">
+                        <span class="material-icons-outlined">logout</span> Log Out
+                    </a>
+                </li>
+            </ul>
+        </aside>
+
+        <main class="main-container">
+            <div class="page-header">
+                <div class="header-title">
+                    <h1>Customers</h1>
+                    <button id="addCustomerBtn" class="add-button">
+                        <span class="material-icons-outlined">add_circle</span>Add Customer
+                    </button>
+                </div>
+                <div class="header-actions">
+                    <div class="search-wrap">
+                        <span class="material-icons-outlined search-icon">search</span>
+                        <input type="text" id="q" placeholder="Search by name, email or phone" autocomplete="off">
+                    </div>
+                    <div class="filters">
+                        <select id="status" class="status-filter">
+                            <option value="">All Status</option>
+                            <option value="To do">To do</option>
+                            <option value="In progress">In progress</option>
+                            <option value="completed">Completed</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+
+            
+            <div class="modal-backdrop" id="modalBackdrop"></div>
+            <div class="add-customer-modal" id="addCustomerModal">
+                <div class="modal-header" id="modalHeader">
+                    <h2>Add New Customer</h2>
+                    <div class="drag-handle">
+                        <span class="material-icons-outlined">drag_indicator</span>
+                    </div>
+                </div>
+                
+                <div class="customer-error" id="customer-error" aria-live="polite"></div>
+                
+                <div class="form-group">
+                    <label for="customerName">Full Name</label>
+                    <input type="text" id="customerName" name="customerName" placeholder="Customer name" required>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="customerEmail">Email</label>
+                        <input type="email" id="customerEmail" name="customerEmail" placeholder="Email address" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="customerPhone">Phone</label>
+                        <input type="tel" id="customerPhone" name="customerPhone" placeholder="Phone number" required>
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="customerStatus">Case Status</label>
+                        <select id="customerStatus" name="customerStatus" required>
+                            <option value="">Select Status</option>
+                            <option value="To do">To do</option>
+                            <option value="In progress">In progress</option>
+                            <option value="completed">Completed</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="customerFamily">Family Status</label>
+                        <select id="customerFamily" name="customerFamily" required>
+                            <option value="">Select Status</option>
+                            <option value="Single">Single</option>
+                            <option value="Married">Married</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="modal-actions">
+                    <button type="button" class="btn-save" id="saveCustomer">
+                        <span class="material-icons-outlined">save</span>
+                        Save Customer
+                    </button>
+                    <button type="button" class="btn-cancel" id="cancelCustomer">
+                        <span class="material-icons-outlined">close</span>
+                        Cancel
+                    </button>
+                </div>
+            </div>
+
+            <section id="customersList" class="customers-grid" aria-live="polite">
+                
+            </section>
+
+            <div id="emptyState" class="empty" hidden>
+                No customers found.
+            </div>
+        </main>
+    </div>
+
+    <script src="scripts/dashboard.js"></script>
+    <script src="scripts/customers.js"></script>
+    <script>
+        // Ensure logout clears auth and replaces history so back-button won't return
+        (function(){
+            const a = document.getElementById('logout');
+            if (!a) return;
+            a.addEventListener('click', function(evt){
+                try{ localStorage.removeItem('auth'); localStorage.removeItem('username'); sessionStorage.clear(); }catch(e){}
+                evt.preventDefault();
+                window.location.replace('./login.html');
+            });
+        })();
+    </script>
+</body>
+</html>

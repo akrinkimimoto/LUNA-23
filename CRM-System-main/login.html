@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>CRM — Login</title>
+ 
+    <link rel="stylesheet" href="./styles/login.css">
+</head>
+
+<body>
+      <svg class="bg-svg" aria-hidden="true" preserveAspectRatio="xMidYMid slice" viewBox="0 0 1600 900">
+         <defs>
+            <radialGradient id="g1" cx="30%" cy="30%">
+               <stop offset="0%" stop-color="#7c5cff" stop-opacity="0.95"/>
+               <stop offset="40%" stop-color="#7c5cff" stop-opacity="0.3"/>
+               <stop offset="100%" stop-color="transparent" stop-opacity="0"/>
+            </radialGradient>
+            <radialGradient id="g2" cx="70%" cy="30%">
+               <stop offset="0%" stop-color="#6ee7b7" stop-opacity="0.95"/>
+               <stop offset="40%" stop-color="#6ee7b7" stop-opacity="0.25"/>
+               <stop offset="100%" stop-color="transparent" stop-opacity="0"/>
+            </radialGradient>
+            <radialGradient id="g3" cx="40%" cy="70%">
+               <stop offset="0%" stop-color="#60a5fa" stop-opacity="0.8"/>
+               <stop offset="40%" stop-color="#60a5fa" stop-opacity="0.18"/>
+               <stop offset="100%" stop-color="transparent" stop-opacity="0"/>
+            </radialGradient>
+            <filter id="fblur" x="-50%" y="-50%" width="200%" height="200%">
+               <feGaussianBlur stdDeviation="60" result="b" />
+               <feBlend in="SourceGraphic" in2="b" mode="screen" />
+            </filter>
+         </defs>
+         <g filter="url(#fblur)">
+            <circle class="c1" cx="-100" cy="100" r="360" fill="url(#g1)" />
+            <circle class="c2" cx="1700" cy="80" r="300" fill="url(#g2)" />
+            <circle class="c3" cx="300" cy="1200" r="260" fill="url(#g3)" />
+         </g>
+      </svg>
+
+      <div class="wrapper">
+            <div style="display:flex;align-items:center;justify-content:space-between;gap:8px;">
+               <div id="logo">
+                   <img src="./images/ChatGPT Image Oct 9, 2025, 03_11_41 PM.png" alt="error">
+               </div>
+               
+            </div>
+        <div class="title-text">
+           <div class="title login"></div>
+           <div class="title signup"></div>
+        </div>
+        <div class="form-container">
+           <div class="slide-controls">
+              <input type="radio" name="slide" id="login" checked>
+              <input type="radio" name="slide" id="signup">
+              <label for="login" class="slide login">Login</label>
+              <label for="signup" class="slide signup">Signup</label>
+              <div class="slider-tab"></div>
+           </div>
+           <div class="form-inner">
+              <form action="#" class="login" novalidate>
+                 <div class="form-error" id="login-error" aria-live="polite"></div>
+                 <div class="field">
+                    <input type="email" placeholder="Email Address" required>
+                 </div>
+                 <div class="field pass-wrap">
+                    <input type="password" placeholder="Password" required>
+                    <button type="button" class="show-pass" aria-pressed="false" title="Show password" aria-label="Show password"></button>
+                 </div>
+                 <div class="pass-link">
+                    <a href="#">Forgot password?</a>
+                 </div>
+                 <div class="field btn">
+                    <div class="btn-layer"></div>
+                    <input type="submit" value="Login">
+                 </div>
+                 <div class="signup-link">
+                    Not a member? <a href="">Signup now</a>
+                 </div>
+              </form>
+              <form action="#" class="signup" novalidate>
+                 <div class="form-error" id="signup-error" aria-live="polite"></div>
+                 <div class="field">
+                    <input type="text" placeholder="Name" required>
+                 </div>
+                 <div class="field">
+                    <input type="email" placeholder="Email Address" required>
+                 </div>
+                 <div class="field pass-wrap">
+                    <input type="password" id="password" placeholder="Password" required>
+                    <button type="button" class="show-pass" aria-pressed="false" title="Show password" aria-label="Show password"></button>
+                 </div>
+                         <div id="password-strength" class="password-strength" aria-live="polite" hidden>
+                            <p>Password must contain:</p>
+                            <ul>
+                               <li class="ps-req" id="ps-length">At least 8 characters</li>
+                               <li class="ps-req" id="ps-lower">Lowercase letter</li>
+                               <li class="ps-req" id="ps-upper">Uppercase letter</li>
+                               <li class="ps-req" id="ps-number">Number (0-9)</li>
+                               <li class="ps-req" id="ps-special">Special character (!@#$%^&*)</li>
+                            </ul>
+                         </div>
+                 <div class="field pass-wrap">
+                    <input type="password" id="confirm-password" placeholder="Confirm password" required>
+                    <button type="button" class="show-pass" aria-pressed="false" title="Show password" aria-label="Show password"></button>
+                 </div>
+                 <div class="field btn">
+                    <div class="btn-layer"></div>
+                    <input type="submit" value="Signup">
+                 </div>
+              </form>
+           </div>
+        </div>
+     </div>
+
+      <div class="modal-backdrop" id="reset-backdrop" hidden></div>
+      <div class="reset-modal" id="resetModal" hidden>
+         <h3>Reset password</h3>
+         <div class="form-error" id="reset-error" aria-live="polite"></div>
+         <div class="field">
+            <input type="email" id="reset-email" placeholder="Enter your account email">
+         </div>
+         <div class="field" style="display:flex;gap:8px;align-items:center;">
+            <button id="send-code" class="toggle-btn">Send code</button>
+            <div id="send-status" style="color:var(--muted);font-size:13px;"></div>
+         </div>
+         <div class="field">
+            <input type="text" id="reset-code" placeholder="Verification code">
+         </div>
+         <div class="field pass-wrap">
+            <input type="password" id="reset-newpass" placeholder="New password">
+            <button type="button" class="show-pass" aria-pressed="false" title="Show password" aria-label="Show password"></button>
+         </div>
+         <div class="field pass-wrap">
+            <input type="password" id="reset-confirm" placeholder="Confirm new password">
+            <button type="button" class="show-pass" aria-pressed="false" title="Show password" aria-label="Show password"></button>
+         </div>
+         <div id="reset-password-strength" class="password-strength" aria-live="polite" hidden>
+            <p>Password must contain:</p>
+            <ul>
+               <li class="ps-req" id="r-ps-length">At least 8 characters</li>
+               <li class="ps-req" id="r-ps-lower">Lowercase letter</li>
+               <li class="ps-req" id="r-ps-upper">Uppercase letter</li>
+               <li class="ps-req" id="r-ps-number">Number (0-9)</li>
+               <li class="ps-req" id="r-ps-special">Special character (!@#$%^&*)</li>
+            </ul>
+         </div>
+         <div style="display:flex;gap:8px;margin-top:12px;">
+            <button id="reset-submit" class="btn1">Reset password</button>
+            <button id="reset-cancel" class="btn2">Cancel</button>
+         </div>
+         <div id="reset-debug" style="margin-top:8px;color:#64748b;font-size:13px;display:none;"></div>
+      </div>
+</body>
+   <div id="toast-container" aria-live="polite" aria-atomic="true"></div>
+   <script src="./scripts/login.js" ></script>
+
+</html>

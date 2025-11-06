@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CCIT's.corp</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600;700;800;900&display=swap"
+    rel="stylesheet">
+
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined" rel="stylesheet">
+
+
+  <link rel="stylesheet" href="styles/dashboard.css">
+  <link rel="stylesheet" href="styles/task.css">
+</head>
+
+<body>
+  <div class="grid-container">
+  
+    <header class="header">
+
+      <div class="menu-icon" onclick="openSidebar()">
+        <span class="material-icons-outlined">keyboard_double_arrow_left</span>
+      </div>
+
+      <div class="header-right">
+        <span id="username"></span>
+      </div>
+
+    </header>
+
+
+   
+    <aside id="sidebar">
+      <div class="sidebar-title">
+        <div class="sidebar-brand  ">
+          CCIT's.corp
+        </div>
+        <span class="material-icons-outlined" onclick="closeSidebar()">close</span>
+
+      </div>
+
+      <div class="search-container">
+        <span class="material-icons-outlined">search</span>
+        <input type="text" placeholder="Search tasks..." id="searchbar">
+        <button id="clearSearch" class="clear-search">
+          <span class="material-icons-outlined">close</span>
+        </button>
+      </div>
+
+      <ul class="sidebar-list">
+        <li class="sidebar-list-item">
+          <a href="dashboard.html">
+            <span class="material-icons-outlined">dashboard</span> Dashboard
+          </a>
+        </li>
+        <li class="sidebar-list-item">
+          <a href="task.html" id="active">
+            <span class="material-icons-outlined">task</span> Tasks
+          </a>
+        </li>
+        <li class="sidebar-list-item">
+          <a href="pages/employee.html">
+            <span class="material-icons-outlined">person</span> Employees
+          </a>
+        </li>
+        <li class="sidebar-list-item">
+          <a href="customers.html">
+            <span class="material-icons-outlined">people</span> Customers
+          </a>
+        </li>
+        <li class="sidebar-list-item">
+          <a href="cases.html">
+            <span class="material-icons-outlined">folder_open</span> Cases
+          </a>
+        </li>
+        <li class="sidebar-list-item">
+          <a href="login.html" id="logout">
+            <span class="material-icons-outlined">logout</span> Log Out
+          </a>
+        </li>
+      </ul>
+
+
+    </aside>
+
+
+    <main class="main-container">
+      <hr>
+
+      <div class="main-title">
+        <h2>Tasks</h2>
+        <button id="addemp">
+          <span class="material-icons-outlined">add_circle</span>Add a Task
+        </button>
+
+      </div>
+      <hr>
+
+      <div class="modal-backdrop" id="modalBackdrop"></div>
+      <div class="addtaskk" id="taskadddiv">
+        <div class="modal-header" id="modalHeader">
+          <h2>Add a Task</h2>
+          <div class="drag-handle">
+            <span class="material-icons-outlined">drag_indicator</span>
+          </div>
+        </div>
+        <div class="task-error" id="task-error" aria-live="polite"></div>
+        
+        <div class="form-group">
+          <input type="text" name="title" id="title" placeholder="Task Title" required>
+        </div>
+        
+        <div class="form-group">
+          <textarea name="description" id="desc" rows="4" placeholder="Task Description"></textarea>
+        </div>
+        
+        <div class="form-row">
+          <div class="form-group">
+            <select name="department" id="department" required>
+              <option value="">Select Department</option>
+              <option value="IT">Information Technology</option>
+              <option value="HR">Human Resources</option>
+              <option value="Finance">Finance</option>
+              <option value="Marketing">Marketing</option>
+              <option value="Operations">Operations</option>
+              <option value="Sales">Sales</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <select name="type" id="select" required>
+              <option value="">Task Type</option>
+              <option value="Follow Up">Follow Up</option>
+              <option value="Call Remainder">Call Remainder</option>
+            </select>
+          </div>
+          
+          <div class="form-group">
+            <select name="status" id="status" required>
+              <option value="">Task Status</option>
+              <option value="To-Do">To-Do</option>
+              <option value="In-Progress">In-Progress</option>
+              <option value="Completed">Completed</option>
+            </select>
+          </div>
+        </div>
+        
+        <div class="form-row">
+          <div class="form-group">
+            <input type="date" id="date" name="date">
+          </div>
+          
+          <div class="form-group">
+            <input type="time" id="time" name="time">
+          </div>
+        </div>
+
+        <div class="btn">
+          <button type="button" class="btn1" id="btn1">
+            <span class="material-icons-outlined">save</span>
+            Save Task
+          </button>
+          <button type="button" class="btn2" id="btn2">
+            <span class="material-icons-outlined">close</span>
+            Cancel
+          </button>
+        </div>
+      </div>
+
+      <div class="maintasksection" id="maintasksection">
+      
+
+    </div>
+
+
+
+
+
+    </main>
+
+
+
+
+
+
+  </div>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/apexcharts/3.41.0/apexcharts.min.js"></script>
+  <script src="scripts/dashboard.js"></script>
+  <script src="scripts/task.js"></script>
+</body>
+
+
+
+</html>
